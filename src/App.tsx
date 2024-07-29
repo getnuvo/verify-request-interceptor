@@ -1,24 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { NuvoImporter } from "nuvo-react";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NuvoImporter
+        licenseKey={"test"}
+        onResults={(res, identifier, complete) => {
+          complete();
+          console.log(res);
+        }}
+        settings={{
+          developerMode: true,
+          identifier: "contact_data",
+          allowManualInput: true,
+          columns: [
+            {
+              key: "name",
+              label: "Name",
+              columnType: "string",
+              description:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            },
+            {
+              key: "email",
+              label: "Email",
+              columnType: "string",
+              description:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            },
+            {
+              key: "phone",
+              label: "Phone",
+              columnType: "string",
+              description:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            },
+            {
+              key: "date",
+              label: "Date",
+              columnType: "string",
+              description:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            },
+          ],
+        }}
+      />
     </div>
   );
 }
